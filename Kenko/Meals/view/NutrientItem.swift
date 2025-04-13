@@ -8,12 +8,12 @@ import SwiftUI
 
 struct NutrientItem: View {
     let label: String
-    let value: String
+    let value: Int
 
     var body: some View {
         VStack(spacing: 4) {
             HStack {
-                Text(value)
+                Text("\(value)")
                     .foregroundColor(.white)
                     .font(.title2)
                     .bold() +

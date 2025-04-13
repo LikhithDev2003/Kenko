@@ -1,8 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="MacroEntity" representedClassName="MacroEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="carbs" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fats" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="protein" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MealDayEntity" representedClassName="MealDayEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="dayIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="dinner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealEntity"/>
+        <relationship name="lunch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealEntity"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealPlanEntity"/>
+    </entity>
+    <entity name="MealEntity" representedClassName="MealEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="calories" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cuisine" optional="YES" attributeType="String"/>
+        <attribute name="ingredients" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="preparation" optional="YES" attributeType="String"/>
+        <attribute name="preparationTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealDayEntity"/>
+        <relationship name="macros" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MacroEntity"/>
+    </entity>
+    <entity name="MealPlanEntity" representedClassName="MealPlanEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="daysAvailable" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealDayEntity"/>
+    </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="activityLevel" optional="YES" attributeType="String"/>
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="budget" optional="YES" attributeType="String"/>
+        <attribute name="dietRestrictions" optional="YES" attributeType="String"/>
+        <attribute name="equipment" optional="YES" attributeType="String"/>
+        <attribute name="experience" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="goalTimeline" optional="YES" attributeType="String"/>
+        <attribute name="goalWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="injuries" optional="YES" attributeType="String"/>
+        <attribute name="nutrition" optional="YES" attributeType="String"/>
+        <attribute name="preferredCuisines" optional="YES" attributeType="String"/>
+        <attribute name="selectedGoal" optional="YES" attributeType="String"/>
         <attribute name="userId" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="workoutTime" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="WorkoutDayEntity" representedClassName="WorkoutDayEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="dayIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="intensity" optional="YES" attributeType="String"/>
+        <attribute name="muscleGroups" optional="YES" attributeType="String"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutPlanEntity" inverseName="days" inverseEntity="WorkoutPlanEntity"/>
+        <relationship name="workouts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutEntity" inverseName="day" inverseEntity="WorkoutEntity"/>
+    </entity>
+    <entity name="WorkoutEntity" representedClassName="WorkoutEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="equipment" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="youtube" optional="YES" attributeType="String"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutDayEntity" inverseName="workouts" inverseEntity="WorkoutDayEntity"/>
+    </entity>
+    <entity name="WorkoutPlanEntity" representedClassName="WorkoutPlanEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutDayEntity" inverseName="plan" inverseEntity="WorkoutDayEntity"/>
     </entity>
 </model>

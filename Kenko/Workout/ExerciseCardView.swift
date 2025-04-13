@@ -7,9 +7,8 @@
 import SwiftUI
 
 struct ExerciseCardView: View {
-    let exercise: Workout
+    let exercise: WorkoutEntity
     let index: Int
-
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,7 +35,7 @@ struct ExerciseCardView: View {
                             .foregroundColor(Color(hex: "#58A7B5"))
                     }
                     .onTapGesture {
-                        if let url = URL(string: exercise.youtube) {
+                        if let url = URL(string: exercise.youtube ?? "") {
                             UIApplication.shared.open(url)
                         }
                     }
@@ -44,13 +43,13 @@ struct ExerciseCardView: View {
                 
                 HStack {
                     
-                    Text(exercise.name)
+                    Text(exercise.name ?? "-")
                         .font(.headline)
                         .foregroundColor(.white)
                     
                     Spacer()
                     
-                    Text("\(exercise.duration) mins | \(exercise.equipment)")
+                    Text("\(exercise.duration) mins | \(exercise.equipment ?? "-")")
                         .font(.footnote)
                         .bold()
                         .foregroundColor(Color(hex: "#919191"))

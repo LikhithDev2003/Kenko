@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MealCardView: View {
     let mealType: String
-    let meal: Meal
+    let meal: MealEntity
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -24,13 +24,13 @@ struct MealCardView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     
 //                    Lunch or dinner
-                    Text(mealType)
+                    Text(mealType.capitalized)
                         .font(.caption)
                         .foregroundColor(.gray)
                     
 //                    name of the meal
                     
-                    Text(meal.name)
+                    Text(meal.name ?? "-")
                         .foregroundColor(.white)
                 }
             }

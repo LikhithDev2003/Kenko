@@ -2,19 +2,21 @@ import SwiftUI
 
 struct WorkoutCardView: View {
     
-    let plan: WorkoutDay
+    let plan: WorkoutDayEntity
     let isSelected: Bool
+    let onViewDetail: () -> Void
     
     var totalDuration: Int {
-        plan.workouts.reduce(0) { $0 + $1.duration }
+        guard let workouts = plan.workouts as? Set<WorkoutEntity> else { return 0 }
+        return workouts.reduce(0) { $0 + Int($1.duration) }
     }
-    let onViewDetail: () -> Void
+
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Text(plan.day)
+                    Text(plan.day ?? "-")
                         .font(.footnote)
                         .foregroundColor(.white)
                         .padding(.horizontal, 16)
@@ -38,14 +40,14 @@ struct WorkoutCardView: View {
                 }
                 .padding(.bottom)
                 
-                Text(plan.muscleGroups.joined(separator: ", "))
+                Text(plan.muscleGroups ?? "-")
                     .font(.headline)
                     .foregroundColor(.white)
                 
                 
                 HStack(spacing: 20) {
                     WorkoutInfoItem(imageName: "duration", text: "\(totalDuration) mins")
-                    WorkoutInfoItem(imageName: "level", text: plan.intensity.capitalized)
+                    WorkoutInfoItem(imageName: "level", text: plan.intensity?.capitalized ?? "-")
                 }
 
                 .padding(.bottom)

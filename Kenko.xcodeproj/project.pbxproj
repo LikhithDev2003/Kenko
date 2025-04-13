@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1828D5A02D8612A7006EB13E /* KenkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828D59F2D8612A7006EB13E /* KenkoApp.swift */; };
-		1828D5A22D8612A7006EB13E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828D5A12D8612A7006EB13E /* ContentView.swift */; };
+		1828D5A22D8612A7006EB13E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828D5A12D8612A7006EB13E /* CoreDataManager.swift */; };
 		1828D5A42D8612A8006EB13E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1828D5A32D8612A8006EB13E /* Assets.xcassets */; };
 		1828D5A72D8612A8006EB13E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1828D5A62D8612A8006EB13E /* Preview Assets.xcassets */; };
 		1828D5B12D8612A8006EB13E /* APIDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828D5B02D8612A8006EB13E /* APIDemoTests.swift */; };
@@ -58,6 +58,10 @@
 		18EB555B2DA839D4008AA9B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB555A2DA839D4008AA9B6 /* AppState.swift */; };
 		18EB555D2DA843FF008AA9B6 /* MealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB555C2DA843F8008AA9B6 /* MealsViewModel.swift */; };
 		18EB55622DAA7B80008AA9B6 /* UserDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18EB55602DAA7B80008AA9B6 /* UserDB.xcdatamodeld */; };
+		18EB55642DAADD9C008AA9B6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB55632DAADD9C008AA9B6 /* ProfileViewModel.swift */; };
+		18EB55662DAAEFFB008AA9B6 /* WorkoutPlanDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB55652DAAEFFB008AA9B6 /* WorkoutPlanDataManager.swift */; };
+		18EB55682DAB9F77008AA9B6 /* MealPlanDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB55672DAB9F77008AA9B6 /* MealPlanDataManager.swift */; };
+		18EB556A2DAC419C008AA9B6 /* ChatSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB55692DAC419C008AA9B6 /* ChatSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +84,7 @@
 /* Begin PBXFileReference section */
 		1828D59C2D8612A7006EB13E /* Kenko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kenko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1828D59F2D8612A7006EB13E /* KenkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KenkoApp.swift; sourceTree = "<group>"; };
-		1828D5A12D8612A7006EB13E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1828D5A12D8612A7006EB13E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1828D5A32D8612A8006EB13E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1828D5A62D8612A8006EB13E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1828D5AC2D8612A8006EB13E /* KenkoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KenkoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +137,10 @@
 		18EB555A2DA839D4008AA9B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		18EB555C2DA843F8008AA9B6 /* MealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewModel.swift; sourceTree = "<group>"; };
 		18EB55612DAA7B80008AA9B6 /* UserDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDB.xcdatamodel; sourceTree = "<group>"; };
+		18EB55632DAADD9C008AA9B6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		18EB55652DAAEFFB008AA9B6 /* WorkoutPlanDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanDataManager.swift; sourceTree = "<group>"; };
+		18EB55672DAB9F77008AA9B6 /* MealPlanDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanDataManager.swift; sourceTree = "<group>"; };
+		18EB55692DAC419C008AA9B6 /* ChatSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +200,8 @@
 				18EB54E32DA3D46F008AA9B6 /* TabView */,
 				18EB54B72D9C5B7D008AA9B6 /* Preferences */,
 				18EB54B62D9C5B55008AA9B6 /* NetworkManager */,
-				1828D5A12D8612A7006EB13E /* ContentView.swift */,
+				1828D5A12D8612A7006EB13E /* CoreDataManager.swift */,
+				18EB55692DAC419C008AA9B6 /* ChatSheetView.swift */,
 				18EB55602DAA7B80008AA9B6 /* UserDB.xcdatamodeld */,
 				1828D5C92D8612B7006EB13E /* userModel.swift */,
 				18EB54B42D971987008AA9B6 /* info.plist */,
@@ -336,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				18EB54F92DA3E623008AA9B6 /* WorkoutViewModel.swift */,
+				18EB55652DAAEFFB008AA9B6 /* WorkoutPlanDataManager.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -378,6 +388,7 @@
 		18EB54F62DA3E5C5008AA9B6 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				18EB55632DAADD9C008AA9B6 /* ProfileViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -404,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				18EB555C2DA843F8008AA9B6 /* MealsViewModel.swift */,
+				18EB55672DAB9F77008AA9B6 /* MealPlanDataManager.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -559,6 +571,7 @@
 			files = (
 				18EB54C92D9C6530008AA9B6 /* DropDownField.swift in Sources */,
 				18EB554B2DA64118008AA9B6 /* MealCardView.swift in Sources */,
+				18EB556A2DAC419C008AA9B6 /* ChatSheetView.swift in Sources */,
 				18EB54C72D9C64B3008AA9B6 /* StepFiveView.swift in Sources */,
 				18EB55552DA6D17C008AA9B6 /* ProfileMetricView.swift in Sources */,
 				18EB554D2DA65043008AA9B6 /* MealDetailView.swift in Sources */,
@@ -573,19 +586,22 @@
 				18EB55512DA658BA008AA9B6 /* FlowLayout.swift in Sources */,
 				18EB55472DA63FD1008AA9B6 /* MealModel.swift in Sources */,
 				18EB54DC2D9FF99A008AA9B6 /* GoalSelectionCard.swift in Sources */,
-				1828D5A22D8612A7006EB13E /* ContentView.swift in Sources */,
+				1828D5A22D8612A7006EB13E /* CoreDataManager.swift in Sources */,
 				18EB555D2DA843FF008AA9B6 /* MealsViewModel.swift in Sources */,
 				18EB55092DA52F99008AA9B6 /* loginView.swift in Sources */,
 				18EB54DE2DA29400008AA9B6 /* SelectableOptionGrid.swift in Sources */,
 				18EB54CC2D9C66B2008AA9B6 /* Color.swift in Sources */,
 				18EB54BB2D9C5FAE008AA9B6 /* Preferences.swift in Sources */,
 				18EB555B2DA839D4008AA9B6 /* AppState.swift in Sources */,
+				18EB55642DAADD9C008AA9B6 /* ProfileViewModel.swift in Sources */,
+				18EB55662DAAEFFB008AA9B6 /* WorkoutPlanDataManager.swift in Sources */,
 				18EB54FC2DA3EA3D008AA9B6 /* WorkoutCardView.swift in Sources */,
 				18EB55622DAA7B80008AA9B6 /* UserDB.xcdatamodeld in Sources */,
 				1828D5A02D8612A7006EB13E /* KenkoApp.swift in Sources */,
 				18EB550F2DA5996B008AA9B6 /* PreferencesViewModel.swift in Sources */,
 				18EB54BF2D9C64A7008AA9B6 /* StepOneView.swift in Sources */,
 				18EB54E22DA2A8AA008AA9B6 /* publishers.swift in Sources */,
+				18EB55682DAB9F77008AA9B6 /* MealPlanDataManager.swift in Sources */,
 				18EB54FE2DA4D825008AA9B6 /* PlanDetailScreen.swift in Sources */,
 				18EB554F2DA656B7008AA9B6 /* NutrientItem.swift in Sources */,
 				18EB54C12D9C64AA008AA9B6 /* StepTwoView.swift in Sources */,

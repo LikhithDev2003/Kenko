@@ -7,17 +7,22 @@
 
 
 import SwiftUI
+import CoreData
 
 struct PlanDetailScreen: View {
     
-    let plan: WorkoutDay
-
-    var totalDuration: Int {
-        plan.workouts.reduce(0) { $0 + $1.duration }
-    }
-    
     @Environment(\.dismiss) private var dismiss
 
+    let plan: WorkoutDayEntity
+
+    var totalDuration: Int {
+        guard let workouts = plan.workouts as? Set<WorkoutEntity> else { return 0 }
+        return workouts.reduce(0) { $0 + Int($1.duration) }
+    }
+
+    var sortedWorkouts: [WorkoutEntity] {
+        (plan.workouts as? Set<WorkoutEntity>)?.sorted(by: { $0.name! < $1.name! }) ?? []
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -32,7 +37,7 @@ struct PlanDetailScreen: View {
                         .foregroundColor(.white)
                 }
 
-                Text("Your Plan for \(plan.day)")
+                Text("Your Plan for \(plan.day ?? "-")")
                     .font(.title).bold()
                     .foregroundColor(.white)
                 
@@ -42,11 +47,11 @@ struct PlanDetailScreen: View {
             // Info pills row
             HStack(spacing: 12) {
                 InfoPill(imageName: "duration", text: "\(totalDuration) mins")
-                InfoPill(imageName: "level", text: plan.intensity.capitalized)
+                InfoPill(imageName: "level", text: plan.intensity?.capitalized ?? "-")
             }
             
             ScrollView {
-                ForEach(Array(plan.workouts.enumerated()), id: \.offset) { index, exercise in
+                ForEach(Array(sortedWorkouts.enumerated()), id: \.offset) { index, exercise in
                     ExerciseCardView(exercise: exercise, index: index)
                 }
             }

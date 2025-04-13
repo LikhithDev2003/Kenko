@@ -16,28 +16,6 @@ struct WorkoutDate: Identifiable {
 }
 
 
-struct WorkoutPlan: Identifiable {
-    let id = UUID()
-    let day: String
-    let title: String
-    let duration: String
-    let level: String
-    let equipment: String?
-    let status: String?
-    let workoutName: String?
-}
-
-
-
-struct Exercise: Identifiable {
-    let id = UUID()
-    let title: String
-    let duration: String
-    let equipment: String
-    let sets: Int
-    let reps: Int
-    let imageName: String
-}
 
 
 
@@ -61,3 +39,10 @@ struct Workout: Codable {
     let duration: Int
     let youtube: String
 }
+
+
+struct ModifiedWorkoutPlanResponse: Codable {
+    let message: String
+    let modifiedPlan: WorkoutDay
+}
+

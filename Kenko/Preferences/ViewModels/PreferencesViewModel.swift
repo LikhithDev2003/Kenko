@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import CoreData
 
 class PreferencesViewModel: ObservableObject {
     @Published var gender: String = ""
@@ -19,7 +20,7 @@ class PreferencesViewModel: ObservableObject {
     @Published var cusine: String = ""
 
     // hardcoded userId for now (replace with your logic)
-    private let userId = "67fa3a3d38b4003fd099adb2"
+    private let userId = "67faad3938b4003fd099adc0"
 
     func calculateAge(from date: Date) -> Int {
         let calendar = Calendar.current
@@ -56,5 +57,34 @@ class PreferencesViewModel: ObservableObject {
             preferredCuisines: cusine.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) },
             budgetForDiet: budget
         )
+    }
+    
+    
+    func savePreferencesToCoreData() async {
+        let context = CoreDataManager.shared.context
+        let user = UserEntity(context: context)
+        
+        user.userId = userId
+        user.age = Int16(calculateAge(from: dob))
+        user.gender = gender
+        user.height = Int16(height)
+        user.weight = Int16(weight)
+        user.goalWeight = Int16(goalWeight)
+        user.selectedGoal = selectedGoal ?? ""
+        user.goalTimeline = duration
+        user.activityLevel = selectedActivity ?? ""
+        user.experience = selectedExperienceLevel ?? ""
+        user.workoutTime = timePreference ?? ""
+        
+        // Store as comma-separated strings
+        user.equipment = "Dumbells" // You can later allow multiple, comma-separated
+        user.injuries = injuries
+        user.nutrition = selectedNutrition ?? ""
+        user.dietRestrictions = dietaryText
+        user.preferredCuisines = cusine
+        user.budget = budget
+
+        CoreDataManager.shared.save()
+        print("✅ Preferences saved to Core Data")
     }
 }

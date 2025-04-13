@@ -11,7 +11,7 @@ struct StepFiveView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Title & Subtitle
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text("Final step personalize your ")
                     .foregroundColor(.white)
@@ -140,6 +140,18 @@ struct StepFiveView: View {
                             try await viewModel.POSTFitnessGoal()
                             print("✅ Fitness goal submitted")
                             
+                            await viewModel.savePreferencesToCoreData()
+                            
+                            try await NetworkManager.shared.generateWorkoutPlan(userId: "67faad3938b4003fd099adc0")
+                            
+                            let response = try await NetworkManager.shared.getWorkoutPlan(userId: "67faad3938b4003fd099adc0")
+                            WorkoutPlanDataManager.shared.saveWorkoutPlan(response)
+                            
+                            try await NetworkManager.shared.generateMealPlan(userId: "67faad3938b4003fd099adc0")
+                            
+                            let mealPlan = try await NetworkManager.shared.getMealPlan(userId: "67faad3938b4003fd099adc0")
+                            MealPlanDataManager.shared.saveMealPlan(mealPlan)
+
                             
                             DispatchQueue.main.async {
                                 hasCompletedOnboarding = true

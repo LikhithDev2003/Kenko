@@ -8,6 +8,8 @@ import SwiftUI
 
 
 struct ProfileView: View {
+    @StateObject private var viewModel = ProfileViewModel()
+    
     var body: some View {
         VStack(spacing: 0) {
             // Gradient Top Section
@@ -34,23 +36,6 @@ struct ProfileView: View {
 
                     
                     VStack{
-                        // Edit button aligned to the top trailing
-//                        HStack {
-//                            Spacer()
-////                            Button(action: {
-////                                // Handle edit
-////                            }) {
-////                                HStack(spacing: 4) {
-////                                    Image("Pencil")
-////                                        .resizable()
-////                                        .frame(width: 16, height: 16)
-////                                    Text("Edit")
-////                                        .font(.callout)
-////                                        .foregroundColor(.white)
-////                                }
-////                            }
-//                        }
-//                        .padding(.trailing)
                         
                         // Centered profile image
                         Image("profilePic")
@@ -76,11 +61,11 @@ struct ProfileView: View {
 
                     // Profile Metrics
                     HStack(spacing: 0) {
-                        ProfileMetricView(value: "64", unit: "kg", label: "Weight")
+                        ProfileMetricView(value: "\(viewModel.user?.weight ?? 0)", unit: "kg", label: "Weight")
                         Divider().frame(height: 40).background(Color.gray)
-                        ProfileMetricView(value: "175", unit: "cm", label: "Height")
+                        ProfileMetricView(value: "\(viewModel.user?.height ?? 0)", unit: "cm", label: "Height")
                         Divider().frame(height: 40).background(Color.gray)
-                        ProfileMetricView(value: "23", unit: "years", label: "Age")
+                        ProfileMetricView(value: "\(viewModel.user?.age ?? 0)", unit: "years", label: "Age")
                     }
                     .padding()
                     .background(Color(hex: "#2B2B2B"))
@@ -134,9 +119,9 @@ struct ProfileView: View {
                                     .foregroundColor(.white.opacity(0.8))
                                     .font(.subheadline)
 
-                                PreferenceItem(label: "Goal weight", value: "50kg")
-                                PreferenceItem(label: "Fitness goal", value: "Lose Fat")
-                                PreferenceItem(label: "Activity goal", value: "4 days/week")
+                                PreferenceItem(label: "Goal weight", value: "\(viewModel.user?.goalWeight ?? 0)kg")
+                                PreferenceItem(label: "Fitness goal", value: viewModel.user?.selectedGoal ?? "-")
+                                PreferenceItem(label: "Activity goal", value: "\(viewModel.user?.goalTimeline ?? "-") weeks")
                             }
                             
                             Divider()
@@ -147,9 +132,9 @@ struct ProfileView: View {
                                     .foregroundColor(.white.opacity(0.8))
                                     .font(.subheadline)
 
-                                PreferenceItem(label: "Nutrition preferences", value: "Vegan")
-                                PreferenceItem(label: "Dietary restrictions", value: "Lactose Free")
-                                PreferenceItem(label: "Cuisines", value: "Indian, Mediterranean")
+                                PreferenceItem(label: "Nutrition preferences", value: viewModel.user?.nutrition ?? "-")
+                                PreferenceItem(label: "Dietary restrictions", value: (viewModel.user?.dietRestrictions as? [String])?.joined(separator: ", ") ?? "-")
+                                PreferenceItem(label: "Cuisines", value: (viewModel.user?.preferredCuisines as? [String])?.joined(separator: ", ") ?? "-")
                             }
                         }
                         .padding()
